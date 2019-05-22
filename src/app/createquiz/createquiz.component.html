@@ -1,0 +1,51 @@
+<a [routerLink]="['/admin']"><button class="btn btn-warning">BACK</button></a>
+<div>
+    <h5 style="color: red">{{invalid}}</h5>
+    <clr-input-container>
+        <label>Quiz Name: </label><input type="text" clrInput #quizname>        
+    </clr-input-container>
+    <br>
+    <button class="btn btn-primary" (click)="createQuiz(quizname.value);">Create</button>
+    <br>
+    
+    <div *ngIf="clicked">
+    <form clrForm clrLayout="horizontal">
+        <clr-input-container>
+            <label>Question:</label>
+            <input type="text" #question clrInput required/>
+        </clr-input-container>
+        <clr-input-container>
+            <label>Choice 1:</label>
+            <input type="text" #choice1 clrInput required>
+        </clr-input-container>
+        <clr-input-container>
+            <label>IsCorrect?</label>
+            <input type="text" value="false" #choice1torf clrInput required>
+        </clr-input-container>
+        <clr-input-container>
+            <label>Choice 2:</label>
+            <input type="text" #choice2 clrInput required>
+        </clr-input-container>
+        <clr-input-container>
+            <label>IsCorrect?</label>
+            <input type="text" value="false" #choice2torf clrInput required>
+        </clr-input-container>
+        <clr-input-container>
+            <label>Choice 3:</label>
+            <input type="text" #choice3 clrInput required>
+        </clr-input-container>
+        <clr-input-container>
+            <label>IsCorrect?</label>
+            <input type="text" value="false" #choice3torf clrInput required>
+        </clr-input-container>
+        <br>
+        <h5 style="color: red"> 
+                {{questioninvalid}}
+        </h5>
+        <button class="btn btn-success" (click)=insertOption(question.value,choice1.value,choice1torf.value,choice2.value,choice2torf.value,choice3.value,choice3torf.value)>Submit</button><br><br>
+        <button type="reset" class="btn btn-primary" (click)="lastclick=true;insertQuestion(question.value);">Next</button>
+    </form>
+    </div>
+    <br>
+    
+</div>

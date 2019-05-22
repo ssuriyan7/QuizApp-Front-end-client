@@ -1,0 +1,27 @@
+<div>
+  <a [routerLink]="['/user']"><button class="btn btn-warning">GO BACK</button></a><br>
+</div>
+<div style="padding:10px">
+  <ol type="1">
+    <li *ngFor="let question of questions">
+      {{question.questionText}}
+      <br> 
+      <div *ngFor="let option of question.options" style="padding: 10px">
+        <div class="option">
+          <input id="{{option.optionId}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" style="bottom:5px;"/>
+          <label [attr.for]="option.optionId">{{option.optionText}}</label>
+        </div>
+      </div>
+      <button class="btn btn-success" (click)="isCorrect(question)">SUBMIT ANSWER</button>
+      <br><br>
+    </li>
+  </ol>
+</div>
+<hr>
+<div>
+  <button class="btn btn-success" (click)="showResult=true">SUBMIT QUIZ</button>
+</div>
+<div *ngIf="showResult">
+  <h4>Your Score: {{this.score}}</h4>
+</div>
+<br>

@@ -1,0 +1,27 @@
+<div style="padding: 10px">
+<div *ngIf="valid != ''">
+  <h5 style="color: red">{{valid}}!</h5>
+</div>
+<clr-radio-container>>
+  <clr-radio-wrapper>
+    <input type="radio" name="userType" value="user" (click)="setradio('user')" clrRadio checked>
+    <label> USER</label>
+  </clr-radio-wrapper> <br><br>
+  <clr-radio-wrapper>
+    <input type="radio" name="userType" value="admin" (click)="setradio('admin')" clrRadio>  
+    <label> ADMIN </label><br><br>
+  </clr-radio-wrapper>
+</clr-radio-container>
+  <div *ngIf="isSelected('user')" style="padding: 10px">
+    <label>USER NAME </label>  
+    <input type="text" #userid required autofocus/> <br> <br>
+    <button class="btn btn-primary" type="submit" (click)="viewQuizes(userid.value)">TAKE QUIZES</button>
+    <!--<input type="password" #password placeholder="password"/>-->
+    <br><br>
+    <!--<input type="submit" value="register"  (click)="register(userid.value,password.value)">-->
+  </div>
+  <div *ngIf="isSelected('admin')" style="padding: 10px"> 
+    <label>PASSWORD </label> 
+    <input type="password" #password /> <br> <br>
+    <button type="submit" class="btn btn-primary" (click)="viewConsole(password.value)">VIEW CONSOLE</button>
+  </div>

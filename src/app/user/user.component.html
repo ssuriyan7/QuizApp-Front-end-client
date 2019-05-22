@@ -1,0 +1,28 @@
+
+<div>
+    <a [routerLink]="['']"><button class="btn btn-warning">BACK</button></a>
+</div>
+<h3>Welcome! These are the quizes available.</h3>
+<div class="container">
+    <table class="table table-bordered table-inverse">
+      <tr>
+        <th>QUIZ ID</th>
+        <th>QUIZ TITLE</th>
+        <th> </th>
+      </tr>
+      <tr *ngFor="let quiz of quizes">
+        <td >
+          {{quiz.quizId}}
+        </td>
+        <td>
+          {{quiz.quizName}}
+        </td>
+        <td>
+          <button class="btn btn-success" (click) = "getQuestions(quiz.quizId)">Take</button>
+        </td>
+        
+      </tr>
+    </table>
+  </div>
+  <br>
+  <br>
