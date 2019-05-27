@@ -1,6 +1,6 @@
 {
 	"/server": {
-		"target": "http://localhost:8774",
+		"target": "http://localhost:8080/quizapp",
 		"secure": false,
     "changeOrigin": true,
     "logLevel": "debug",

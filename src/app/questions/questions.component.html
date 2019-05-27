@@ -1,6 +1,7 @@
-<div>
-  <a [routerLink]="['/user']"><button class="btn btn-warning">GO BACK</button></a><br>
+<div style="padding: 10px">
+  <a [routerLink]="['/user']"><button class="btn btn-warning">BACK</button></a><br>
 </div>
+<hr style="color:blue">
 <div style="padding:10px">
   <ol type="1">
     <li *ngFor="let question of questions">
@@ -8,20 +9,26 @@
       <br> 
       <div *ngFor="let option of question.options" style="padding: 10px">
         <div class="option">
-          <input id="{{option.optionId}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" style="bottom:5px;"/>
+          <clr-checkbox-wrapper>
+          <input id="{{option.optionId}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option)" clrCheckbox/>
           <label [attr.for]="option.optionId">{{option.optionText}}</label>
+          </clr-checkbox-wrapper>
         </div>
       </div>
-      <button class="btn btn-success" (click)="isCorrect(question)">SUBMIT ANSWER</button>
-      <br><br>
+      <!--button [clrLoading]="submitBtnState" class="btn btn-success-outline" (click)="">SUBMIT ANSWER</button>-->
+      <!--button class="btn btn-success" (click)="isCorrect(question)">SUBMIT ANSWER</button>
+      <br><br>-->
+      <br>
     </li>
   </ol>
 </div>
 <hr>
-<div>
-  <button class="btn btn-success" (click)="showResult=true">SUBMIT QUIZ</button>
+<div *ngIf="showResult" style="padding: 10px">
+    <h4>Your Score: {{this.score}}</h4>
+  </div>
+<div style="padding-left: 10px">
+  <button class="btn btn-success" (click)="calculateScore(); showResult=true">SUBMIT QUIZ</button>
 </div>
-<div *ngIf="showResult">
-  <h4>Your Score: {{this.score}}</h4>
+<div style="padding: 10px">
+    <a [routerLink]="['/user']"><button class="btn btn-warning">BACK</button></a><br>
 </div>
-<br>

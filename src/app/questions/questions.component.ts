@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from '../services/questions.service';
 import {Router, ActivatedRoute } from '@angular/router';
 import { Question } from '../models/question.model';
+import { ClrLoadingState } from '@clr/angular';
 
 @Component({
   selector: 'app-questions',
@@ -9,13 +10,13 @@ import { Question } from '../models/question.model';
   styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent implements OnInit {
-
   public quizid;
   public questions;
   public options;
   public answer;
   public score = 0;
   public showResult= false;
+  submitBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
   constructor(private questionsService: QuestionsService,private router: Router, private act: ActivatedRoute) { }
 
   ngOnInit() {
@@ -42,11 +43,9 @@ export class QuestionsComponent implements OnInit {
       }
      });
   }
-  public isCorrect(question) {
-    if(!question.answered) {
+  public calculateScore() {
+    for(let question of this.questions) {
       this.score = question.options.every(x => x.selected === x.correct) ? this.score + 1 : this.score;
-      question.answered = true;
     }
-    //console.log(this.score);
   }
 }

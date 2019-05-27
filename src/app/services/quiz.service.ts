@@ -23,11 +23,11 @@ export class QuizService {
   //public option2 = new Option;
   //public option3 = new Option;
   public getQuizes() {
-    return this.http.get('server/showQuizes');
+    return this.http.get('http://10.160.205.33:8090/quizapp/showQuizes');
   }
   public createQuiz(quizName: string) {
     //console.log(quizName);
-    this.http.post('server/insertQuiz',quizName).subscribe(data =>{data});
+    this.http.post('http://10.160.205.33:8090/quizapp/insertQuiz',quizName).subscribe(data =>{data});
   }
   public insertOption(choice1:string,choice2:string,choice3:string,torf1:boolean,torf2:boolean,torf3:boolean){
     //this.choices = [choice1,choice2,choice3];
@@ -42,10 +42,10 @@ export class QuizService {
     this.options[2].correct=torf3;
 
     console.log(this.options);
-    this.http.post('server/insertOption',this.options).subscribe(x=>{x});
+    this.http.post('http://10.160.205.33:8090/quizapp/insertOption',this.options).subscribe(x=>{x});
 
   }
   public insertQuestion(questionText:string) {
-    this.http.post('server/insertQuestion',questionText).subscribe(x=>{x});
+    this.http.post('http://10.160.205.33:8090/quizapp/insertQuestion',questionText).subscribe(x=>{x});
   }
 }

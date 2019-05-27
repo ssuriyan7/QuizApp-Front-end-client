@@ -1,5 +1,8 @@
-<a [routerLink]="['/admin']"><button class="btn btn-warning">BACK</button></a>
-<div>
+<div style="padding:10px">
+<a [routerLink]="['/admin']"><button class="btn btn-warning">BACK</button></a>    
+</div>
+<hr>
+<div style="padding: 10px">
     <h5 style="color: red">{{invalid}}</h5>
     <clr-input-container>
         <label>Quiz Name: </label><input type="text" clrInput #quizname>        
@@ -11,39 +14,52 @@
     <div *ngIf="clicked">
     <form clrForm clrLayout="horizontal">
         <clr-input-container>
-            <label>Question:</label>
-            <input type="text" #question clrInput required/>
+            <label>Question: </label><input type="text" #question clrInput/>
         </clr-input-container>
+        <br>
         <clr-input-container>
             <label>Choice 1:</label>
+            <br>
             <input type="text" #choice1 clrInput required>
         </clr-input-container>
-        <clr-input-container>
+        <clr-checkbox-wrapper>
+            <input type="checkbox" (change)="checkboxone($event)"  clrCheckbox >
             <label>IsCorrect?</label>
-            <input type="text" value="false" #choice1torf clrInput required>
-        </clr-input-container>
+        </clr-checkbox-wrapper>
         <clr-input-container>
             <label>Choice 2:</label>
-            <input type="text" #choice2 clrInput required>
+            <br>
+            <input type="text" #choice2 clrInput required>            
         </clr-input-container>
-        <clr-input-container>
+        <clr-checkbox-wrapper>
+            <input type="checkbox" (change)="checkboxtwo($event)" clrCheckbox >
             <label>IsCorrect?</label>
-            <input type="text" value="false" #choice2torf clrInput required>
-        </clr-input-container>
+        </clr-checkbox-wrapper>
         <clr-input-container>
             <label>Choice 3:</label>
+            <br>
             <input type="text" #choice3 clrInput required>
         </clr-input-container>
-        <clr-input-container>
+        <clr-checkbox-wrapper>
+            <input type="checkbox" (change)="checkboxthree($event)" clrCheckbox > 
             <label>IsCorrect?</label>
-            <input type="text" value="false" #choice3torf clrInput required>
-        </clr-input-container>
+        </clr-checkbox-wrapper>
         <br>
         <h5 style="color: red"> 
                 {{questioninvalid}}
         </h5>
-        <button class="btn btn-success" (click)=insertOption(question.value,choice1.value,choice1torf.value,choice2.value,choice2torf.value,choice3.value,choice3torf.value)>Submit</button><br><br>
-        <button type="reset" class="btn btn-primary" (click)="lastclick=true;insertQuestion(question.value);">Next</button>
+        <button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="insertOption(question.value,choice1.value,choice2.value,choice3.value)">Validate</button>
+        <!--button class="btn btn-success" (click)=insertOption(question.value,choice1.value,choice1torf.value,choice2.value,choice2torf.value,choice3.value,choice3torf.value)>Submit</button>-->
+        <br>
+        <div *ngIf="submit">
+            <strong><h5 style="color: green">
+                Click Next to Proceed...
+            </h5></strong>
+        </div>
+        <button type="reset" class="btn btn-primary" (click)="submit=false;insertQuestion(question.value);">Next</button>
+        <h5 style="color: red">
+            {{validmsg}}
+        </h5>
     </form>
     </div>
     <br>
