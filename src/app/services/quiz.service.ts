@@ -41,7 +41,7 @@ export class QuizService {
     this.options[2].optionText=choice3;
     this.options[2].correct=torf3;
 
-    console.log(this.options);
+    //console.log(this.options);
     this.http.post('http://10.160.205.33:8090/quizapp/insertOption',this.options).subscribe(x=>{x});
 
   }

@@ -45,7 +45,10 @@ export class QuestionsComponent implements OnInit {
   }
   public calculateScore() {
     for(let question of this.questions) {
-      this.score = question.options.every(x => x.selected === x.correct) ? this.score + 1 : this.score;
+      if(!question.answered) {
+        this.score = question.options.every(x => x.selected === x.correct) ? this.score + 1 : this.score;
+        question.answered = true;
+      }
     }
   }
 }

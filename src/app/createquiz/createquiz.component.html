@@ -8,42 +8,49 @@
         <label>Quiz Name: </label><input type="text" clrInput #quizname>        
     </clr-input-container>
     <br>
-    <button class="btn btn-primary" (click)="createQuiz(quizname.value);">Create</button>
-    <br>
-    
+    <div *ngIf="!clicked">
+            <button class="btn btn-primary" (click)="createQuiz(quizname.value);">Create</button>
+    </div>
+
     <div *ngIf="clicked">
     <form clrForm clrLayout="horizontal">
         <clr-input-container>
             <label>Question: </label><input type="text" #question clrInput/>
         </clr-input-container>
-        <br>
+        
         <clr-input-container>
-            <label>Choice 1:</label>
+            <label>Option 1:</label>
             <br>
             <input type="text" #choice1 clrInput required>
         </clr-input-container>
-        <clr-checkbox-wrapper>
-            <input type="checkbox" (change)="checkboxone($event)"  clrCheckbox >
-            <label>IsCorrect?</label>
-        </clr-checkbox-wrapper>
         <clr-input-container>
-            <label>Choice 2:</label>
+            <label>Option 2:</label>
             <br>
             <input type="text" #choice2 clrInput required>            
         </clr-input-container>
-        <clr-checkbox-wrapper>
-            <input type="checkbox" (change)="checkboxtwo($event)" clrCheckbox >
-            <label>IsCorrect?</label>
-        </clr-checkbox-wrapper>
         <clr-input-container>
-            <label>Choice 3:</label>
+            <label>Option 3:</label>
             <br>
             <input type="text" #choice3 clrInput required>
         </clr-input-container>
-        <clr-checkbox-wrapper>
-            <input type="checkbox" (change)="checkboxthree($event)" clrCheckbox > 
-            <label>IsCorrect?</label>
-        </clr-checkbox-wrapper>
+    <clr-radio-container clrInline>
+        <label>Correct Option?</label>
+        <br>
+        <clr-radio-wrapper>
+            <input type="radio" name="choices" (change)="checkboxone($event)"  clrRadio >
+            <label>Option 1</label>
+        </clr-radio-wrapper>
+        
+        <clr-radio-wrapper>
+            <input type="radio" name="choices" (change)="checkboxtwo($event)" clrRadio >
+            <label>Option 2</label>
+        </clr-radio-wrapper>
+        
+        <clr-radio-wrapper>
+            <input type="radio" name="choices" (change)="checkboxthree($event)" clrRadio > 
+            <label>Option 3</label>
+        </clr-radio-wrapper>
+    </clr-radio-container>
         <br>
         <h5 style="color: red"> 
                 {{questioninvalid}}

@@ -27,12 +27,21 @@ export class CreatequizComponent implements OnInit {
   }
   public checkboxone(e){
     this.choicebox1=e.target.checked;
+    this.choicebox2=false;
+    this.choicebox3=false;
+    //console.log(this.choicebox1,this.choicebox2,this.choicebox3);
   }
   public checkboxtwo(e){
+    this.choicebox1=false;
     this.choicebox2=e.target.checked;
+    this.choicebox3=false;
+    //console.log(this.choicebox1,this.choicebox2,this.choicebox3);
   }
   public checkboxthree(e){
+    this.choicebox1=false;
+    this.choicebox2=false;
     this.choicebox3=e.target.checked;
+    //console.log(this.choicebox1,this.choicebox2,this.choicebox3);
   }
   public createQuiz(quizname:string) {
     //console.log(quizname);
@@ -54,7 +63,7 @@ export class CreatequizComponent implements OnInit {
     if(questionText.trim().length !== 0 && choice1.trim().length !==0 && choice2.trim().length !==0 && choice3.trim().length !==0) {
       this.next=false;
       this.validmsg="";
-      console.log(this.choicebox1,this.choicebox2,this.choicebox3);
+      //console.log(this.choicebox1,this.choicebox2,this.choicebox3);
       this.quizService.insertOption(choice1,choice2,choice3,this.choicebox1,this.choicebox2,this.choicebox3);
       this.questioninvalid="";
       this.validateBtnState = ClrLoadingState.SUCCESS;
