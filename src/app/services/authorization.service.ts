@@ -16,12 +16,12 @@ export class AuthorizationService {
   constructor(private http: HttpClient) { 
   }
   public getUser(user: User): Observable<User> {
-    return this.http.post<User>("10.160.205.33:8090/quizapp/insertUser", user).pipe(
+    return this.http.post<User>("http://10.160.205.33:8090/quizapplication-0.0.1-SNAPSHOT/insertUser", user).pipe(
       map(data => new User().deserialize(data))
     );
   }
   login(user: User){
-     this.result = this.http.post<string>('10.160.205.33:8090/quizapp/login', user).pipe;
+     this.result = this.http.post<string>('http://10.160.205.33:8090/quizapplication-0.0.1-SNAPSHOT/login', user).pipe;
     return this.result;
   }
 }
