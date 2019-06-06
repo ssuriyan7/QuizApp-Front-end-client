@@ -55,7 +55,7 @@
         <h5 style="color: red"> 
                 {{questioninvalid}}
         </h5>
-        <button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="insertOption(question.value,choice1.value,choice2.value,choice3.value)">Validate</button>
+        <button [clrLoading]="validateBtnState" class="btn btn-info-outline" (click)="insertQuestion(question.value,choice1.value,choice2.value,choice3.value)">Validate</button>
         <!--button class="btn btn-success" (click)=insertOption(question.value,choice1.value,choice1torf.value,choice2.value,choice2torf.value,choice3.value,choice3torf.value)>Submit</button>-->
         <br>
         <div *ngIf="submit">
@@ -63,7 +63,7 @@
                 Click Next to Proceed...
             </h5></strong>
         </div>
-        <button type="reset" class="btn btn-primary" (click)="submit=false;insertQuestion(question.value);">Next</button>
+        <button type="reset" class="btn btn-primary" (click)="submit=false;insertOption(choice1.value,choice2.value,choice3.value);">Next</button>
         <h5 style="color: red">
             {{validmsg}}
         </h5>

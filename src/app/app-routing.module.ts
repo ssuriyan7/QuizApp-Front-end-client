@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonpageComponent } from './commonpage/commonpage.component'
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
+import { UserChoiceComponent } from './user-choice/user-choice.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { CreatequizComponent } from './createquiz/createquiz.component';
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent
+  },
+  {
+    path: 'userchoice',
+    component: UserChoiceComponent
   },
   {
     path: 'user',

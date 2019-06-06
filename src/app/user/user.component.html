@@ -13,13 +13,13 @@
       </tr>
       <tr *ngFor="let quiz of quizes">
         <td >
-          {{quiz.quizId}}
+          {{quiz.id}}
         </td>
         <td>
           {{quiz.quizName}}
         </td>
         <td>
-          <button class="btn btn-success" (click) = "getQuestions(quiz.quizId)">Take</button>
+          <button class="btn btn-success" (click) = "getQuestions(quiz.id)">Take</button>
         </td>
         
       </tr>

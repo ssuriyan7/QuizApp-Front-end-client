@@ -15,6 +15,8 @@ import { QuestionsService } from './services/questions.service';
 import { CreatequizComponent } from './createquiz/createquiz.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserChoiceComponent } from './user-choice/user-choice.component';
+import { PerPageComponent } from './per-page/per-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminComponent,
     UserComponent,
     QuestionsComponent,
-    CreatequizComponent
+    CreatequizComponent,
+    UserChoiceComponent,
+    PerPageComponent
   ],
   imports: [
     BrowserModule,

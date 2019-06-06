@@ -23,6 +23,6 @@ export class UserComponent implements OnInit {
     );
   }
   public getQuestions(n:number) {
-    this.router.navigate(['/questions'], { queryParams: { quizid: n } });
+    this.router.navigate(['userchoice'], { queryParams: { quizid: n } });
   }
 }
