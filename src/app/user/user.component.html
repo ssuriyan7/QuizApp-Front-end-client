@@ -5,24 +5,27 @@
 <hr>
 <div class="container" style="padding: 10px">
   <h3>Welcome! These are the quizes available.</h3>
-    <table class="table table-bordered table-inverse">
+    <table class="table">
+      <thead>
       <tr>
         <th>QUIZ ID</th>
         <th>QUIZ TITLE</th>
         <th> </th>
       </tr>
+      </thead>
+      <tbody>
       <tr *ngFor="let quiz of quizes">
-        <td >
+        <td style="padding-top: 3%">
           {{quiz.id}}
         </td>
-        <td>
+        <td style="padding-top: 3%">
           {{quiz.quizName}}
         </td>
         <td>
           <button class="btn btn-success" (click) = "getQuestions(quiz.id)">Take</button>
         </td>
-        
       </tr>
+    </tbody>
     </table>
   </div>
   <br>

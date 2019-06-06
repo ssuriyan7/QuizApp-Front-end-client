@@ -1,7 +1,3 @@
-<div style="padding: 10px">
-  <a [routerLink]="['/user']"><button class="btn btn-warning">BACK</button></a><br>
-</div>
-<hr style="color:blue">
 <div style="padding:10px">
   <ol type="1">
     <li *ngFor="let question of questions">
@@ -21,9 +17,9 @@
 </div>
 <hr>
 <div *ngIf="showResult" style="padding: 10px">
-    <h4>Your Score: {{this.score}}</h4>
+    <h4>Your Score: {{score}}</h4>
   </div>
-<div style="padding-left: 10px">
+<div *ngIf="!showResult" style="padding-left: 10px">
   <button class="btn btn-success" (click)="calculateScore(); showResult=true">SUBMIT QUIZ</button>
 </div>
 <div style="padding: 10px">

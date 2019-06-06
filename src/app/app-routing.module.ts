@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { UserChoiceComponent } from './user-choice/user-choice.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { CreatequizComponent } from './createquiz/createquiz.component';
+import { PerPageComponent } from './per-page/per-page.component';
 const routes: Routes = [
   {
     path: '',
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserComponent
+  },
+  {
+    path: 'perpagequestions',
+    component: PerPageComponent
   },
   {
     path: 'questions',
