@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div style="padding: 10px;">
     <a [routerLink]="['']"><button class="btn btn-warning">BACK</button></a>
@@ -26,4 +27,34 @@
     </table>
   </div>
   <br>
+=======
+
+<div style="padding: 10px;">
+    <a [routerLink]="['']"><button class="btn btn-warning">BACK</button></a>
+</div>
+<hr>
+<div class="container" style="padding: 10px">
+  <h3>Welcome! These are the quizes available.</h3>
+    <table class="table table-bordered table-inverse">
+      <tr>
+        <th>QUIZ ID</th>
+        <th>QUIZ TITLE</th>
+        <th> </th>
+      </tr>
+      <tr *ngFor="let quiz of quizes">
+        <td >
+          {{quiz.id}}
+        </td>
+        <td>
+          {{quiz.quizName}}
+        </td>
+        <td>
+          <button class="btn btn-success" (click) = "getQuestions(quiz.id)">Take</button>
+        </td>
+        
+      </tr>
+    </table>
+  </div>
+  <br>
+>>>>>>> d7f6c19e8afd31e379343a186b67c71a46bb7ee5
   <br>
