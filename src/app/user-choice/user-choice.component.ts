@@ -19,8 +19,11 @@ export class UserChoiceComponent implements OnInit {
       this.quizid = params['quizid'];
     });
   }
+  public perpageQuiz() {
+    
+  }
 
-  public toUser() {
+  public singlepageQuiz() {
     this.router.navigate(["questions"], { queryParams: { quizid: this.quizid } });
   }
 }
