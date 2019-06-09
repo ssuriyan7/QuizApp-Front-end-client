@@ -24,16 +24,16 @@ export class QuizService {
   public result;
   params = new HttpParams();
   public getQuizes() {
-    return this.http.get('server/getQuizes');
+    return this.http.get('http://10.160.205.33:8090/quizapplication-0.0.1-SNAPSHOT/getQuizes');
   }
   public createQuiz(quizName: string) {
-    this.http.post('server/insertQuiz',quizName).subscribe(data =>{this.quiz = data});
+    this.http.post('http://10.160.205.33:8090/quizapplication-0.0.1-SNAPSHOT/insertQuiz',quizName).subscribe(data =>{this.quiz = data});
   }
 
   public insertQuestion(questionText:string) {
     this.paramQuestion.questionText = questionText;
     this.paramQuestion.quiz = this.quiz;
-    this.http.post('server/insertQuestion',this.paramQuestion).subscribe(x=>{this.question=x});
+    this.http.post('http://10.160.205.33:8090/quizapplication-0.0.1-SNAPSHOT/insertQuestion',this.paramQuestion).subscribe(x=>{this.question=x});
   }
 
   public insertOption(choice1:string,choice2:string,choice3:string,torf1:boolean,torf2:boolean,torf3:boolean){
@@ -46,7 +46,7 @@ export class QuizService {
     this.options[2].optionText=choice3;
     this.options[2].correct=torf3;
     this.options[2].question=this.question;
-    this.http.post('server/insertOption',this.options).subscribe(x=>{x});
+    this.http.post('http://10.160.205.33:8090/quizapplication-0.0.1-SNAPSHOT/insertOption',this.options).subscribe(x=>{x});
   }
 
   public setUserSubject(id: String) {
@@ -63,12 +63,12 @@ export class QuizService {
     this.result.score = score;
     this.qz.id = quizid;
     this.result.quiz = this.qz;
-    this.http.post('server/insertResult', this.result).subscribe(x=>{x});
+    this.http.post('http://10.160.205.33:8090/quizapplication-0.0.1-SNAPSHOT/insertResult', this.result).subscribe(x=>{x});
   }
 
   public getResult(quizid) {
     this.params = this.params.set('quizid', quizid);
-    return this.http.get('server/getResults',{params:this.params});
+    return this.http.get('http://10.160.205.33:8090/quizapplication-0.0.1-SNAPSHOT/getResults',{params:this.params});
   }
 
 

@@ -34,7 +34,6 @@ export class PerPageComponent implements OnInit {
 
     this.quizService.getUserId().subscribe(data =>{
       this.user = data;
-      console.log(this.user);
     });
 
   }
@@ -74,8 +73,8 @@ export class PerPageComponent implements OnInit {
         this.score = question.options.every(x => x.selected === x.correct) ? this.score + 1 : this.score;
         question.answered = true;
       }
-      this.quizService.insertResult(this.user, this.score, this.quizid);
     }
+    this.quizService.insertResult(this.user, this.score, this.quizid);
   }
 
   public setCount(n) {

@@ -30,6 +30,7 @@
 
   <div style="padding: 10px" *ngIf="!submitted">
     <button class="btn btn-success-outline" (click)="goTo(pager.index + 1);">Next</button>
+    <br>
     <button class="btn btn-warning-outline" (click)="calculateScore();submitted=true">SUBMIT</button>
   </div>
 </div>
