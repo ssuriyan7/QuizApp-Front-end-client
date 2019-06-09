@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../services/authorization.service';
 import { User } from '../models/user.model';
 import {Router} from '@angular/router';
+import { QuizService } from '../services/quiz.service';
+import { BehaviorSubject } from 'rxjs';
 //import {User} from '../models/user.model';
 
 @Component({
@@ -13,7 +15,7 @@ import {Router} from '@angular/router';
 export class CommonpageComponent implements OnInit {
   valid : string = '';
   private adminpassword = 'admin';
-  constructor(private router: Router,private authService :AuthorizationService) { }
+  constructor(private quizService: QuizService, private router: Router,private authService :AuthorizationService) { }
 
   ngOnInit() {
     
@@ -31,13 +33,14 @@ export class CommonpageComponent implements OnInit {
     return (this.selectedLink === name);
   }
 
-  public viewQuizes(id: string) {
+  public viewQuizes(id: String) {
     if((id.trim()).length === 0) {   
       this.valid="Please enter user name";
     }
     else {   
       this.valid='';
       this.router.navigate(["user"]);
+      this.quizService.setUserSubject(id);
     }
   }
 

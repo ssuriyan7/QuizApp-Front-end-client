@@ -1,0 +1,27 @@
+<div style="padding: 10px;">
+    <a [routerLink]="['/admin']"><button class="btn btn-warning">BACK</button></a>
+</div>
+<div>
+  <table class="table" style="width: 80%; left: 10%; position:absolute;">
+    <thead>
+    <tr>
+      <th>QUIZ ID</th>
+      <th>QUIZ TITLE</th>
+      <th> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let quiz of quizes" >
+      <td style="padding-top: 3%">
+        {{quiz.id}}
+      </td>
+      <td style="padding-top: 3%">
+        {{quiz.quizName}}
+      </td>
+      <td>
+        <button class="btn btn-success" (click) = "getResults(quiz.id)">View</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

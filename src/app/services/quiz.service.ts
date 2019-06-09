@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Option } from '../models/option.model';
 import { Question } from '../models/question.model';
+import { BehaviorSubject } from 'rxjs';
+import { Result } from '../models/result.model';
+import { Quiz } from '../models/quiz.model';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type':'application/json'})
@@ -16,6 +19,10 @@ export class QuizService {
   public quiz;
   public question;
   public paramQuestion = new Question;
+  public usersub;
+  public qz;
+  public result;
+  params = new HttpParams();
   public getQuizes() {
     return this.http.get('server/getQuizes');
   }
@@ -41,5 +48,29 @@ export class QuizService {
     this.options[2].question=this.question;
     this.http.post('server/insertOption',this.options).subscribe(x=>{x});
   }
+
+  public setUserSubject(id: String) {
+    this.usersub = new BehaviorSubject(id);
+  }
+  public getUserId() {
+    return this.usersub.asObservable();
+  }
+
+  public insertResult(user, score, quizid) {
+    this.result = new Result();
+    this.qz = new Quiz();
+    this.result.userName = user;
+    this.result.score = score;
+    this.qz.id = quizid;
+    this.result.quiz = this.qz;
+    this.http.post('server/insertResult', this.result).subscribe(x=>{x});
+  }
+
+  public getResult(quizid) {
+    this.params = this.params.set('quizid', quizid);
+    return this.http.get('server/getResults',{params:this.params});
+  }
+
+
 }
 //http://10.160.205.33:8090/quizapp/

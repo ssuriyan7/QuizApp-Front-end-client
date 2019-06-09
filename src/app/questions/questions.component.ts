@@ -3,6 +3,7 @@ import { QuestionsService } from '../services/questions.service';
 import {Router, ActivatedRoute } from '@angular/router';
 import { Question } from '../models/question.model';
 import { ClrLoadingState } from '@clr/angular';
+import { QuizService } from '../services/quiz.service';
 
 @Component({
   selector: 'app-questions',
@@ -16,16 +17,22 @@ export class QuestionsComponent implements OnInit {
   public answer;
   public score = 0;
   public showResult= false;
+  public user;
   submitBtnState: ClrLoadingState = ClrLoadingState.DEFAULT;
-  constructor(private questionsService: QuestionsService,private router: Router, private act: ActivatedRoute) { }
+  constructor(private quizService: QuizService, private questionsService: QuestionsService,private router: Router, private act: ActivatedRoute) { }
 
   ngOnInit() {
     this.act
     .queryParams 
     .subscribe(params => {
-      //console.log(params);
       this.quizid = params['quizid'];
     });
+
+    this.quizService.getUserId().subscribe(data =>{
+      this.user = data;
+      console.log(this.user);
+    });
+
     this.getQuestions();
   }
   public getQuestions() {
@@ -50,5 +57,7 @@ export class QuestionsComponent implements OnInit {
         question.answered = true;
       }
     }
+
+    this.quizService.insertResult(this.user, this.score, this.quizid);
   }
 }

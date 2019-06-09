@@ -2,10 +2,10 @@
   <div *ngIf="!submitted">
   <div *ngFor="let question of filteredQuestions;">
     <div *ngIf="question.count">{{setCount(question.count)}}</div>
-    <div><h5>Question {{pager.index + 1}} of {{pager.count}}.</h5></div>
-    <h5>{{pager.index + 1}}.
+    <div><strong><h5 style="color: firebrick">Question {{pager.index + 1}} of {{pager.count}}.</h5></strong></div>
+    <strong><h5>{{pager.index + 1}}.
       <span [innerHTML]="question.questionText"></span>
-    </h5>
+    </h5></strong>
     <div *ngFor="let option of question.options" style="padding: 10px">
       <div>
         <clr-checkbox-wrapper>

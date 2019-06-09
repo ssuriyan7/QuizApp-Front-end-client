@@ -7,6 +7,8 @@ import { UserChoiceComponent } from './user-choice/user-choice.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { CreatequizComponent } from './createquiz/createquiz.component';
 import { PerPageComponent } from './per-page/per-page.component';
+import { AdminResultComponent } from './admin-result/admin-result.component';
+import { ResultComponent } from './result/result.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +37,14 @@ const routes: Routes = [
   {
     path: 'createQuiz',
     component: CreatequizComponent
+  },
+  {
+    path: 'results',
+    component: AdminResultComponent
+  },
+  {
+    path: 'result',
+    component: ResultComponent
   }
   
 ];

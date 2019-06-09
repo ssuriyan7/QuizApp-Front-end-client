@@ -1,7 +1,7 @@
 <div style="padding:10px">
   <ol type="1">
     <li *ngFor="let question of questions">
-      {{question.questionText}}
+      <strong>{{question.questionText}}</strong>
       <br> 
       <div *ngFor="let option of question.options" style="padding: 10px">
         <div class="option">

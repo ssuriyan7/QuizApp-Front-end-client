@@ -12,10 +12,15 @@ export class UserComponent implements OnInit {
 
   public quizes;
   public questions;
+  public user;
   constructor(private quizService: QuizService, private router: Router, private act: ActivatedRoute) { }
-
+ 
   ngOnInit() {
     this.getQuizes();
+    this.quizService.getUserId().subscribe(data =>{
+      this.user = data;
+      console.log(this.user);
+    });
   }
   public getQuizes() {
     this.quizService.getQuizes().subscribe(

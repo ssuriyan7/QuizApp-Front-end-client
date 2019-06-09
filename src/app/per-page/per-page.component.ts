@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionsService } from '../services/questions.service';
+import { QuizService } from '../services/quiz.service';
 
 @Component({
   selector: 'app-per-page',
@@ -18,8 +19,9 @@ export class PerPageComponent implements OnInit {
   public questions;
   public score = 0;
   public submitted = false;
+  public user;
 
-  constructor(private act: ActivatedRoute, private questionsService: QuestionsService) { }
+  constructor(private quizService: QuizService, private act: ActivatedRoute, private questionsService: QuestionsService) { }
 
   ngOnInit() {
     this.act
@@ -29,6 +31,12 @@ export class PerPageComponent implements OnInit {
       this.quizid = params['quizid'];
     });
     this.getQuestions();
+
+    this.quizService.getUserId().subscribe(data =>{
+      this.user = data;
+      console.log(this.user);
+    });
+
   }
 
   public getQuestions() {
@@ -66,6 +74,7 @@ export class PerPageComponent implements OnInit {
         this.score = question.options.every(x => x.selected === x.correct) ? this.score + 1 : this.score;
         question.answered = true;
       }
+      this.quizService.insertResult(this.user, this.score, this.quizid);
     }
   }
 

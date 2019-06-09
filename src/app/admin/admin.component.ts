@@ -15,4 +15,7 @@ export class AdminComponent implements OnInit {
   createQuiz() {
     this.router.navigate(['/createQuiz']);
   }
+  viewResults() {
+    this.router.navigate(['/results']);
+  }
 }
